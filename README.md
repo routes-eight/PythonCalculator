@@ -10,3 +10,6 @@ PyQt5-based calculator - Used for practice
 
 * PyQt5 모듈 설치 (python -m pip install pyqt5)
 * 파이썬 파일 실행 (python calculator_main.py)
+
+## Acknowledgements
+* 링크: https://studyingrabbit.tistory.com/23 를 참고하였습니다
