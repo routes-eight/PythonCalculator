@@ -1,5 +1,5 @@
 ## PythonCalculator
-
+PyQt5 based calculator - Used for practice
 
 ## Goals
 
@@ -10,28 +10,3 @@
 
 * PyQt5 모듈 설치 (python -m pip install pyqt5)
 * 파이썬 파일 실행 (python calculator_main.py)
-
-## For enterprise
-
-
-
-## Need help?
-
-
-
-## Want to contribute?
-
-
-
-## Want to support us?
-
-
-
-## Dependencies
-
-
-## Security contact information
-
-
-
-## Acknowledgements
