@@ -1,5 +1,5 @@
-#3 새 버튼 추가
 import sys
+import math
 from PyQt5.QtWidgets import *
 
 
@@ -38,6 +38,11 @@ class Main(QDialog):
         button_minus.clicked.connect(lambda state, operation="-": self.button_operation_clicked(operation))
         button_product.clicked.connect(lambda state, operation="*": self.button_operation_clicked(operation))
         button_division.clicked.connect(lambda state, operation="/": self.button_operation_clicked(operation))
+        button_modula.clicked.connect(lambda state, operation="%": self.button_operation_clicked(operation))
+
+        button_inverse.clicked.connect(lambda state: self.button_inverse(self.es.text()))
+        button_square.clicked.connect(lambda state: self.button_square(self.es.text()))
+        button_root.clicked.connect(lambda state: self.button_root(self.es.text()))
 
         ### 사칙연산 버튼을 layout_operation 레이아웃에 추가
         layout_all_buttons.addWidget(button_plus, 4, 3)
@@ -91,13 +96,12 @@ class Main(QDialog):
         layout_all_buttons.addWidget(button_dot, 5, 2)
 
         button_plus_minus = QPushButton("+/-")
-        button_plus_minus.clicked.connect(lambda state, num="+/-": self.toggle_plus_minus(num))
+        button_plus_minus.clicked.connect(lambda state, num="+/-": self.button_plus_minus(num))
         layout_all_buttons.addWidget(button_plus_minus, 5, 0)
 
         # ### 각 레이아웃을 main_layout 레이아웃에 추가
         main_layout.addLayout(layout_equation_solution, 0, 0)
         main_layout.addLayout(layout_all_buttons, 1, 0)
-
 
         self.setLayout(main_layout)
         self.show()
@@ -128,7 +132,7 @@ class Main(QDialog):
         es = es[:-1]
         self.es.setText(es)
 
-    def toggle_plus_minus(self, num):
+    def button_plus_minus(self, num):
         current_text = self.es.text()
         if num == "+/-":
             if current_text.startswith('-'):
@@ -136,6 +140,21 @@ class Main(QDialog):
             else:
                 self.es.setText('-' + current_text)  # 양수인 경우 맨 앞에 - 추가
 
+    def button_inverse(self, num):
+        num = float(num)
+        num = 1 / num
+        self.es.setText(str(num))
+
+    def button_square(self, num):
+
+        num = float(num)
+        num = num**2
+        self.es.setText(str(num))
+
+    def button_root(self, num):
+        num = float(num)
+        num = math.sqrt(num)
+        self.es.setText(str(num))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
